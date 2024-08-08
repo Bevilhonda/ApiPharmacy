@@ -13,3 +13,8 @@ logs/
 # IDE-specific files
 *.iml
 .DS_Store
+
+# Arquivos do Gradle
+gradle/
+gradlew
+gradlew.bat
