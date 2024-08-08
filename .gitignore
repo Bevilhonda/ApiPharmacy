@@ -1,0 +1,15 @@
+# Build output
+build/
+classes/
+
+# Dependency caches
+.gradle/
+/local/
+.idea/
+
+# Logs
+logs/
+
+# IDE-specific files
+*.iml
+.DS_Store
