@@ -25,7 +25,11 @@ class ServicesFuncionarioTest {
     @Test
     void cadastrarFuncionario() throws NomeNaoEncontrado {
         FuncionarioEntity funcionario =
-                new FuncionarioEntity(null, "Pedro", "Batista", "Farmaceutico");
+                new FuncionarioEntity(
+                        null,
+                        "Pedro",
+                        "Batista",
+                        "Farmaceutico");
 
         servicesFuncionario.cadastrarFuncionario(funcionario);
 
@@ -35,7 +39,11 @@ class ServicesFuncionarioTest {
     void buscarFuncionarioById() throws FuncionarioNaoEncontrado {
 
         FuncionarioEntity funcionario =
-                new FuncionarioEntity(null, "Pedro", "Batista", "Farmaceutico");
+                new FuncionarioEntity(
+                        null,
+                        "Pedro",
+                        "Batista",
+                        "Farmaceutico");
 
         servicesFuncionario.cadastrarFuncionario(funcionario);
         FuncionarioEntity funcionario1 = servicesFuncionario.getById(1);
@@ -48,7 +56,11 @@ class ServicesFuncionarioTest {
     void buscarFuncionarioPorNome() throws NomeNaoEncontrado {
 
         FuncionarioEntity funcionario =
-                new FuncionarioEntity(null, "Pedro", "Batista", "Farmaceutico");
+                new FuncionarioEntity(
+                        null,
+                        "Pedro",
+                        "Batista",
+                        "Farmaceutico");
         servicesFuncionario.cadastrarFuncionario(funcionario);
         List<FuncionarioEntity> listaNomes = servicesFuncionario.getNome("Pedro");
 
@@ -58,7 +70,11 @@ class ServicesFuncionarioTest {
     @Test
     void buscaPorSobrenome() throws SobrenomeNaoEncontrado {
         FuncionarioEntity funcionario =
-                new FuncionarioEntity(null, "Pedro", "Batista", "Farmaceutico");
+                new FuncionarioEntity(
+                        null,
+                        "Pedro",
+                        "Batista",
+                        "Farmaceutico");
         servicesFuncionario.cadastrarFuncionario(funcionario);
 
         List<FuncionarioEntity> listaNomes = servicesFuncionario.getSobrenome("Batista");
@@ -70,7 +86,11 @@ class ServicesFuncionarioTest {
     @Test
     void buscaPorCargo() throws CargoNaoEncontrado {
         FuncionarioEntity funcionario =
-                new FuncionarioEntity(null, "Pedro", "Batista", "Farmaceutico");
+                new FuncionarioEntity(
+                        null,
+                        "Pedro",
+                        "Batista",
+                        "Farmaceutico");
         servicesFuncionario.cadastrarFuncionario(funcionario);
 
         List<FuncionarioEntity> listaNomes = servicesFuncionario.getCargo("Farmaceutico");
@@ -82,10 +102,18 @@ class ServicesFuncionarioTest {
     @Test
     void atualizarFuncionario() throws FuncionarioNaoEncontrado, CadastroVazio {
         FuncionarioEntity funcionario =
-                new FuncionarioEntity(null, "Pedro", "Batista", "Farmaceutico");
+                new FuncionarioEntity(
+                        null,
+                        "Pedro",
+                        "Batista",
+                        "Farmaceutico");
 
         FuncionarioEntity funcionarioAtual =
-                new FuncionarioEntity(null, "Jorge", "Santos", "Atendente");
+                new FuncionarioEntity(
+                        null,
+                        "Jorge",
+                        "Santos",
+                        "Atendente");
 
         servicesFuncionario.cadastrarFuncionario(funcionario);
 
@@ -131,23 +159,80 @@ class ServicesFuncionarioTest {
     void validaServicoAtualizaFuncionario() {
 
         FuncionarioEntity funcionario2 =
-                new FuncionarioEntity(null, "Jorge", "Santos", "Atendente");
+                new FuncionarioEntity(
+                        null,
+                        "Jorge",
+                        "Santos",
+                        "Atendente");
 
-        Throwable excecao = catchThrowable(() -> servicesFuncionario.atualizaFuncionario(1, funcionario2));
+        Throwable excecao = catchThrowable(() ->
+                servicesFuncionario.atualizaFuncionario(1, funcionario2));
 
         assertThat(excecao).isInstanceOf(FuncionarioNaoEncontrado.class)
-                .hasMessageContaining("O Funcionario com o id 1 não foi encontrado.");
+                .hasMessageContaining(
+                        "O Funcionario com o id 1 não foi encontrado.");
 
     }
 
     @Test
     void validaServicoExcluiFuncionario() {
 
-        Throwable exception = catchThrowable(() -> servicesFuncionario.excluiFuncionario(1));
+        Throwable exception = catchThrowable(() ->
+                servicesFuncionario.excluiFuncionario(1));
 
         assertThat(exception)
                 .isInstanceOf(FuncionarioNaoEncontrado.class)
-                .hasMessageContaining("O Funcionario com o id 1 não foi encontrado.");
+                .hasMessageContaining(
+                        "O Funcionario com o id 1 não foi encontrado.");
+
+    }
+
+    @Test
+    void validaExcecaoBuscaPorId(){
+
+        Throwable excecao = catchThrowable(()->
+                servicesFuncionario.getById(1));
+
+        assertThat(excecao)
+                .isInstanceOf(FuncionarioNaoEncontrado.class)
+                .hasMessageContaining(
+                        "O Funcionario com o id 1 não foi encontrado.");
+
+    }
+
+    @Test
+    void validaExcecaoBuscaPorSobrenome(){
+        Throwable excecao = catchThrowable(()->
+                servicesFuncionario.getSobrenome("Santos"));
+
+        assertThat(excecao)
+                .isInstanceOf(SobrenomeNaoEncontrado.class)
+                .hasMessageContaining(
+                        "Não foi encontrado nenhum funcionario com o sobrenome Santos");
+
+
+    }
+
+    @Test
+    void validaExcecaoBuscaPorCargo(){
+        Throwable excecao = catchThrowable(()->
+                servicesFuncionario.getCargo("Atendente"));
+
+        assertThat(excecao)
+                .isInstanceOf(CargoNaoEncontrado.class)
+                .hasMessageContaining(
+                        "Não foi encontrado nenhum cargo com o nome Atendente");
+
+    }
+    @Test
+    void validaBuscaTodosFuncionarios(){
+        Throwable excecao = catchThrowable(()->
+                servicesFuncionario.todosFuncionarios());
+
+        assertThat(excecao)
+                .isInstanceOf(CadastroVazio.class)
+                .hasMessageContaining(
+                        "Nenhum funcionario foi encontrado.");
 
     }
 }
