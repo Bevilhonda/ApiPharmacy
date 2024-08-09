@@ -12,11 +12,12 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 public class ExcluiFuncionario {
+
     @Autowired
     private ServicesFuncionario services;
 
     @DeleteMapping("/Excluir/{id_funcionario}")
-    public ResponseEntity<?> excluirFuncionario(@PathVariable Integer id_funcionario){
+    public ResponseEntity<?> excluirFuncionario(@PathVariable Integer id_funcionario) {
         try {
             services.excluiFuncionario(id_funcionario);
 
