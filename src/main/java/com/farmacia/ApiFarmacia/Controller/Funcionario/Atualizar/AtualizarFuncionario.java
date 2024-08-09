@@ -15,14 +15,16 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 public class AtualizarFuncionario {
+
+
     @Autowired
     private ServicesFuncionario services;
 
     @PutMapping("/Atualiza/{id_funcionario}")
     public ResponseEntity<?> atualizaFuncionario(
-            @PathVariable Integer id_funcionario, @RequestBody @Valid RequisicaoDeDados dadosFuncionario){
+            @PathVariable Integer id_funcionario, @RequestBody @Valid RequisicaoDeDados dadosFuncionario) {
         try {
-            services.atualizaFuncionario(id_funcionario,dadosFuncionario.toModel());
+            services.atualizaFuncionario(id_funcionario, dadosFuncionario.toModel());
 
             return ResponseEntity.status(OK).build();
 
