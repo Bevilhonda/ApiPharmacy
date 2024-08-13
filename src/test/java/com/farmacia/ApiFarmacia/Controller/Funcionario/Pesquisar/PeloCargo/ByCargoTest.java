@@ -1,7 +1,6 @@
 package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloCargo;
 
 import com.farmacia.ApiFarmacia.Model.Funcionario.Excecoes.CargoNaoEncontrado;
-import com.farmacia.ApiFarmacia.Model.Funcionario.Excecoes.SobrenomeNaoEncontrado;
 import com.farmacia.ApiFarmacia.Model.Funcionario.FuncionarioEntity;
 import com.farmacia.ApiFarmacia.Service.Funcionario.ServicesFuncionario;
 import org.hamcrest.Matchers;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
