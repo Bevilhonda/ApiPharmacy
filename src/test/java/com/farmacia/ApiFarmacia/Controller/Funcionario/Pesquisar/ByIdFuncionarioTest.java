@@ -1,5 +1,6 @@
-package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloIdFuncionario;
+package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar;
 
+import com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloIdFuncionario.ByIdFuncionario;
 import com.farmacia.ApiFarmacia.Model.Funcionario.Excecoes.FuncionarioNaoEncontrado;
 import com.farmacia.ApiFarmacia.Model.Funcionario.FuncionarioEntity;
 import com.farmacia.ApiFarmacia.Service.Funcionario.ServicesFuncionario;

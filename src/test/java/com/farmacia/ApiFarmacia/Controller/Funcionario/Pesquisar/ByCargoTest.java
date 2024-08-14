@@ -1,5 +1,6 @@
-package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloCargo;
+package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar;
 
+import com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloCargo.ByCargo;
 import com.farmacia.ApiFarmacia.Model.Funcionario.Excecoes.CargoNaoEncontrado;
 import com.farmacia.ApiFarmacia.Model.Funcionario.FuncionarioEntity;
 import com.farmacia.ApiFarmacia.Service.Funcionario.ServicesFuncionario;

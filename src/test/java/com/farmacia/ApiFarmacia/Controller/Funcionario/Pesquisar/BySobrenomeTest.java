@@ -1,6 +1,7 @@
-package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloNome;
+package com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar;
 
-import com.farmacia.ApiFarmacia.Model.Funcionario.Excecoes.NomeNaoEncontrado;
+import com.farmacia.ApiFarmacia.Controller.Funcionario.Pesquisar.PeloSobrenome.BySobrenome;
+import com.farmacia.ApiFarmacia.Model.Funcionario.Excecoes.SobrenomeNaoEncontrado;
 import com.farmacia.ApiFarmacia.Model.Funcionario.FuncionarioEntity;
 import com.farmacia.ApiFarmacia.Service.Funcionario.ServicesFuncionario;
 import org.hamcrest.Matchers;
@@ -21,44 +22,49 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ByNome.class)
+@WebMvcTest(BySobrenome.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class ByNomeTest {
+class BySobrenomeTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private ServicesFuncionario services ;
+    private ServicesFuncionario services;
 
     @Test
-    void getNome() throws Exception , NomeNaoEncontrado {
+    void getSobrenome() throws Exception, SobrenomeNaoEncontrado {
         FuncionarioEntity funcionario = new FuncionarioEntity
                 (1, "Pedro", "Santos", "Atendente");
         FuncionarioEntity funcionario2 = new FuncionarioEntity
                 (2, "Jorge", "Santos", "Atendente");
+
         List<FuncionarioEntity> lista = new ArrayList<>();
         lista.add(funcionario);
         lista.add(funcionario2);
 
-        when(services.getNome("Pedro")).thenReturn(lista);
-        this.mockMvc.perform(get("/Nome/Pedro"))
+        when(services.getSobrenome("Santos")).thenReturn(lista);
+        this.mockMvc.perform(get("/Sobrenome/Santos"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.lista", Matchers.hasSize(2)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.lista[0].nome")
                         .value("Pedro"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.lista[0].sobrenome")
+                        .value("Santos"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.lista[1].nome")
                         .value("Jorge"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.lista[1].sobrenome")
+                        .value("Santos"))
                 .andReturn();
-
     }
+
     @Test
-    void requisicaoPorNomeNaoCompleta() throws Exception , NomeNaoEncontrado {
+    void requisicaoPorSobrenomeNaoCompleta() throws Exception ,SobrenomeNaoEncontrado{
         List<FuncionarioEntity> listaVazia = new ArrayList<>();
 
-        when(services.getNome("Jorge"))
-                .thenThrow( new NomeNaoEncontrado("Jorge"))
+        when(services.getSobrenome("Santos"))
+                .thenThrow( new SobrenomeNaoEncontrado("Santos"))
                 .thenReturn(listaVazia);
 
-        mockMvc.perform(get("/Nome/Jorge"))
+        mockMvc.perform(get("/Sobrenome/Santos"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound())
                 .andReturn();
     }
