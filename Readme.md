@@ -56,13 +56,10 @@ This project was built using the following technologies and tools:
 
 ## 🛠️ How to Run the Project
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-repo.git
 
 ---
 
-<h2 align="center">💡 ‼️ 💡 Este repositório foi criado como parte de
-um desafio e para fins de estudo.‼️</h2>
+<h2 align="center">💡 ‼️ 💡 This repository was created as part of
+a challenge and for study purposes.‼️</h2>
 <h2 align="center"> <strong> Marcelo Bevilacqua de Andrade </strong></h2>
 
