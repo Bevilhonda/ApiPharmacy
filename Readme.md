@@ -5,7 +5,7 @@
 ## 📜 Projeto: API Farmácia  - Treinando Java + Spring Boot 📜
 
 
-Este projeto faz parte de um programa pessoaç de treinamento em Java + Spring Boot
+Este projeto faz parte de um programa pessoal de treinamento em Java + Spring Boot
 e envolve a construção de uma API para um sistema de Farmácia.
 Em breve também vai incluir um frontend com React para interação com a API.
 
@@ -25,10 +25,10 @@ para desenvolvimento web e construção de API, incluindo:
 ## 🔺 Tecnologias usadas 🎯
 
 - **Backend:** Java, Spring Boot
-- **Frontend:** React
 - **Database:** MySQL 
 - **Version Control:** Git and GitHub
 - **Development Tools:** IntelliJ IDEA, Postman (Para testar a API )
+
 - **Front End:** React (Em Breve)
 
 ---
@@ -54,8 +54,8 @@ uma experiência de usuário perfeita.
 - RESTful API arquitetura.
 
 ---
- Neste projeto tentei aplicar o máximo de organização que eu aprendi.
- Dividi em microserviços cada Endpoint , e para cada um criei os testes 
+-  Neste projeto tentei aplicar o máximo de organização que eu aprendi.
+-  Dividi em microserviços cada Endpoint , e para cada um criei os testes 
  seguindo o padrão TDD , fiz o teste unitário e  usei o banco H2 para 
  os testes de integração. 
 
